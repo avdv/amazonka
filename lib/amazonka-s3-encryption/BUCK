@@ -1,3 +1,5 @@
+load("@buck2-haskell//:defs.bzl", "haskell_library")
+
 extensions = [
     "NoImplicitPrelude",
     "DataKinds",
