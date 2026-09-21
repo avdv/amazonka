@@ -12,11 +12,20 @@ ghc_flags = ["-X" + ext for ext in extensions] + [
 
 haskell_library(
     name = "amazonka-workmail",
-    srcs = glob(["src/**/*.hs", "src/**/*.hs-boot", "gen/**/*.hs", "gen/**/*.hs-boot"]),
+    srcs = glob([
+        "src/**/*.hs",
+        "src/**/*.hs-boot",
+        "gen/**/*.hs",
+        "gen/**/*.hs-boot",
+    ]),
     compiler_flags = ghc_flags,
+    strip_prefix = [
+        "gen",
+        "src",
+    ],
     visibility = ["//amazonka/..."],
     deps = [
-        "//amazonka/lib/amazonka-core:amazonka-core",
+        "//amazonka/lib/amazonka-core",
         "//haskell:base",
     ],
 )
